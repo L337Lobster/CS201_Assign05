@@ -49,13 +49,12 @@ public class Mandelbrot {
 			for(int j = 0; j < iterCounts.length; j++)
 			{
 				int rgb = iterCounts[i][j];
-				bufferedImage.setRGB(i, j, new Color(rgb,rgb,rgb).getRGB());
+				//System.out.println(Color.decode("0x"+Integer.toHexString(rgb)));
+				g.setColor(Color.decode("0x"+Integer.toHexString(rgb)));
+				g.fillRect(i, j, 1, 1);
 			}
 		}
-
-		System.out.println(Color.BLUE.getRGB());
 		g.dispose();
-		
 		OutputStream os = new BufferedOutputStream(new FileOutputStream(fileName));
 		try {
 		    ImageIO.write(bufferedImage, "PNG", os);

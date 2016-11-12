@@ -38,7 +38,7 @@ public class MandelbrotTask implements Runnable {
 
 	private int computeIterCount(Complex c) {
 		Complex z = new Complex(0,0);
-		for(int i = 0; i < 255; i++)
+		for(int i = 0; i < 16777215; i++)
 		{
 			if(z.getMagnitude() > 2.0)
 			{
@@ -46,7 +46,7 @@ public class MandelbrotTask implements Runnable {
 			}
 			z = z.multiply(z).add(c);
 		}
-		return 255;
+		return 16777215;
 	}
 
 	private Complex getComplex(int i, int j) {
