@@ -37,14 +37,19 @@ public class MandelbrotTask implements Runnable {
     }
 
 	private int computeIterCount(Complex c) {
-		// TODO Auto-generated method stub
-		return 0;
+		Complex z = new Complex(0,0);
+		for(int i = 0; i < 255; i++)
+		{
+			if(z.getMagnitude() > 2.0)
+			{
+				return i;
+			}
+			z = z.multiply(z).add(c);
+		}
+		return 255;
 	}
 
 	private Complex getComplex(int i, int j) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Complex(i, j);
 	}
-
-    // TODO: implement getComplex and computeIterCount methods
 }

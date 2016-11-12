@@ -48,4 +48,8 @@ public class Complex {
 	public double getImag() {
 		return imag;
 	}
+	public String toString()
+	{
+		return real + " + " + imag + "i";
+	}
 }
