@@ -52,6 +52,7 @@ public class Mandelbrot {
 				//System.out.println(Color.decode("0x"+Integer.toHexString(rgb)));
 				g.setColor(Color.decode("0x"+Integer.toHexString(rgb)));
 				g.fillRect(i, j, 1, 1);
+				g.fillRect(i, j, 1, 1);
 			}
 		}
 		g.dispose();

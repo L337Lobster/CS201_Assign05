@@ -8,7 +8,7 @@ package edu.ycp.cs201.mandelbrot;
  *
  */
 public class MandelbrotTask implements Runnable {
-    private double x1, y1, x2, y2;
+    private double x1, y1, x2, y2, incrementX, incrementY;
     private int startCol, endCol, startRow, endRow;
     private int[][] iterCounts;
 
@@ -24,6 +24,8 @@ public class MandelbrotTask implements Runnable {
         this.startRow = startRow;
         this.endRow = endRow;
         this.iterCounts = iterCounts;
+        incrementX = (x2-x1)/endRow;
+        incrementY = (y2-y1)/endCol;
     }
 
     public void run() {
@@ -38,7 +40,7 @@ public class MandelbrotTask implements Runnable {
 
 	private int computeIterCount(Complex c) {
 		Complex z = new Complex(0,0);
-		for(int i = 0; i < 16777215; i++)
+		for(int i = 1000; i >= 0; i--)
 		{
 			if(z.getMagnitude() > 2.0)
 			{
@@ -46,10 +48,12 @@ public class MandelbrotTask implements Runnable {
 			}
 			z = z.multiply(z).add(c);
 		}
-		return 16777215;
+		return 0;
 	}
 
 	private Complex getComplex(int i, int j) {
-		return new Complex(i, j);
+		double x = x1+(i*incrementX);
+		double y = y1+(j*incrementY);
+		return new Complex(x, y);
 	}
 }
