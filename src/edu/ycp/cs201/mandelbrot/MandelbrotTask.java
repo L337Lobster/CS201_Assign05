@@ -40,7 +40,7 @@ public class MandelbrotTask implements Runnable {
 
 	private int computeIterCount(Complex c) {
 		Complex z = new Complex(0,0);
-		for(int i = 1000; i >= 0; i--)
+		for(int i = 7000; i >= 0; i--)
 		{
 			if(z.getMagnitude() > 2.0)
 			{

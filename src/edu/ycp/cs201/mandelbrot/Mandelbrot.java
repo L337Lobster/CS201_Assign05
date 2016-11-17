@@ -49,8 +49,7 @@ public class Mandelbrot {
 			for(int j = 0; j < iterCounts.length; j++)
 			{
 				int rgb = iterCounts[i][j];
-				//System.out.println(Color.decode("0x"+Integer.toHexString(rgb)));
-				g.setColor(Color.decode("0x"+Integer.toHexString(rgb)));
+				g.setColor(getColor(rgb));
 				g.fillRect(i, j, 1, 1);
 				g.fillRect(i, j, 1, 1);
 			}
@@ -62,5 +61,36 @@ public class Mandelbrot {
 		} finally {
 		    os.close();
 		}
+	}
+
+	private static Color getColor(int rgb) {
+		CustomColor[] colors = CustomColor.values();
+		Color c = null;
+		double thousands = (int)rgb/1000;
+		double hundreds = (int)rgb%1000/100;
+		double tens = (int)rgb%100/10;
+		double ones = (int)rgb%10;
+		if(thousands==0)
+		{
+			c = colors[0].getColor();
+		}
+		else
+		{
+			CustomColor one = colors[(int)thousands];
+			CustomColor two = colors[(int) ((thousands < colors.length) ? thousands : thousands-1)];
+			double numer = tens*ones;
+			double denom = hundreds*ones*ones;
+			if(numer > denom)
+			{
+				double temp = numer;
+				numer = denom;
+				denom = temp;
+			}
+			double ratio = (numer > 0 && denom > 0) ? (numer/denom) : ((numer+1)/(denom+1));
+			c = one.blendColor(two, ratio);
+			System.out.println(c.toString() + ratio);
+		}
+		c = colors[(int)thousands].getColor();
+		return c;
 	}
 }
