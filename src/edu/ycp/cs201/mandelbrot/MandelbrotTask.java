@@ -30,8 +30,8 @@ public class MandelbrotTask implements Runnable {
     }
 
     public void run() {
-        for (int i = startRow; i < endRow; i++) {
-            for (int j = startCol; j < endCol; j++) {
+        for (int i = startCol; i < endCol; i++) {
+            for (int j = startRow; j < endRow; j++) {
                 Complex c = getComplex(i, j);
                 int iterCount = computeIterCount(c);
                 iterCounts[i][j] = iterCount;
