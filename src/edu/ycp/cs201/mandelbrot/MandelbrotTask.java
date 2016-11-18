@@ -26,6 +26,7 @@ public class MandelbrotTask implements Runnable {
         this.iterCounts = iterCounts;
         incrementX = (x2-x1)/endRow;
         incrementY = (y2-y1)/endCol;
+        //System.out.println(y1 + " " + y2 + " " +startCol + " " + endCol + " " + startRow + " " + endRow);
     }
 
     public void run() {

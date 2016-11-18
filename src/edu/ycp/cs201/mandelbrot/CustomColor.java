@@ -59,7 +59,6 @@ public enum CustomColor {
         } else if (blue > 255) {
             blue = 255;
         }
-        System.out.println(r + " " + ir);
 		return new Color((int)red, (int)green, (int)blue, alpha);
 	}
 
